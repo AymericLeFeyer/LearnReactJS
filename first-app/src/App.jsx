@@ -1,13 +1,13 @@
 import React from "react";
 import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import Liste from "./Liste";
+import Memory from "./Memory";
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">        
-        <Liste />
+      <header className="App-header">
+        <Memory />       
       </header>
     </div>
   );

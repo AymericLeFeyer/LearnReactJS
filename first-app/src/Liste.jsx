@@ -50,6 +50,9 @@ class Liste extends Component {
             onChange={this.onEditAddThing}
           ></input>
           <button onClick={this.onSubmitThing}>Ajouter</button>
+          
+          
+
         </form>
       </div>
     );
