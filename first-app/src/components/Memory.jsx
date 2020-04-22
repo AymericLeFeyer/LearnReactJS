@@ -33,7 +33,7 @@ export default function Memory() {
   const classes = useStyles();
   const [cards, setCards] = useState(shuffle());
   const [coups, setCoups] = useState(0);
-  const [time, setTime] = useState(0);
+  // const [time, setTime] = useState(0);
 
   function shuffle() {
     let cards = [];
@@ -61,8 +61,10 @@ export default function Memory() {
   const handleClic = (id) => {
     if (canFlip) {
       const c = [...cards];
+  
       c.find((card) => {
-        if (card.id === id) {
+        if (card.id === id && !card.isSolved) {
+          
           card.isFlip = card.isFlip ? false : true;
           return true;
         }
@@ -117,6 +119,20 @@ export default function Memory() {
     );
   }
 
+  function DisplayCard(props) {
+    return (
+      <div>
+        <Card className={classes.root}>
+          <CardMedia
+            className={classes.media}
+            image={props.card.isFlip ? props.card.img : bg}
+            onClick={() => props.card.isFlip ? null : handleClic(props.card.id)}
+          />
+        </Card>
+      </div>
+    );
+  }
+
   return (
     <div>
       <Infos />
@@ -124,17 +140,9 @@ export default function Memory() {
         <Grid container>
           {cards.map((card) => {
             return (
-              <div>
-                <Flip spy={card.isFlip}>
-                  <Card className={classes.root}>
-                    <CardMedia
-                      className={classes.media}
-                      image={card.isFlip ? card.img : bg}
-                      onClick={() => handleClic(card.id)}
-                    />
-                  </Card>
-                </Flip>
-              </div>
+              <Flip spy={card.isFlip}>
+                <DisplayCard card={card} />
+              </Flip>
             );
           })}
         </Grid>
