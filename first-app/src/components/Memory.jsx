@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { CardMedia, Card, makeStyles, Grid } from "@material-ui/core";
 
-import { Flip, RubberBand } from "react-reveal";
+import { Flip } from "react-reveal";
 
 import bg from "../images/bg.png";
 import image1 from "../images/image1.jpg";
@@ -14,10 +14,14 @@ import image6 from "../images/image6.jpg";
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
+    margin: 10,
   },
   media: {
     height: 150,
     width: 150,
+  },
+  div: {
+    width: 680,
   },
 });
 
@@ -25,9 +29,11 @@ const tiles = 12;
 const timeBeforeFlip = 1600;
 let canFlip = true;
 
-export default function MediaCard() {
+export default function Memory() {
   const classes = useStyles();
   const [cards, setCards] = useState(shuffle());
+  const [coups, setCoups] = useState(0);
+  const [time, setTime] = useState(0);
 
   function shuffle() {
     let cards = [];
@@ -84,6 +90,7 @@ export default function MediaCard() {
           canFlip = true;
           handleClic(flipCards[0].id);
           handleClic(flipCards[1].id);
+          setCoups(coups + 1);
         }, timeBeforeFlip);
       }
     }
@@ -94,21 +101,31 @@ export default function MediaCard() {
       c1.isSolved = true;
       c2.isSolved = true;
       canFlip = true;
+      setCoups(coups + 1);
 
       return true;
     }
     return false;
   }
 
+  function Infos() {
+    return (
+      <div>
+        <h1>Memor'Emilie</h1>
+        <p>Coups : {coups}</p>
+      </div>
+    );
+  }
+
   return (
     <div>
-      <Grid container>
-        {cards.map((card) => {
-          return (
-            <div>
-              
+      <Infos />
+      <div className={classes.div}>
+        <Grid container>
+          {cards.map((card) => {
+            return (
+              <div>
                 <Flip spy={card.isFlip}>
-                
                   <Card className={classes.root}>
                     <CardMedia
                       className={classes.media}
@@ -116,13 +133,12 @@ export default function MediaCard() {
                       onClick={() => handleClic(card.id)}
                     />
                   </Card>
-                  
                 </Flip>
-              
-            </div>
-          );
-        })}
-      </Grid>
+              </div>
+            );
+          })}
+        </Grid>
+      </div>
     </div>
   );
 }
