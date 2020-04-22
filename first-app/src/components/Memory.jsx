@@ -27,12 +27,12 @@ const useStyles = makeStyles({
 
 const tiles = 12;
 const timeBeforeFlip = 1600;
-let canFlip = true;
 
 export default function Memory() {
   const classes = useStyles();
   const [cards, setCards] = useState(shuffle());
   const [coups, setCoups] = useState(0);
+  const [canFlip, setCanFlip] = useState(true);
   // const [time, setTime] = useState(0);
 
   function shuffle() {
@@ -86,10 +86,10 @@ export default function Memory() {
     }
 
     if (flipCards.length === 2) {
-      canFlip = false;
+      setCanFlip(false);
       if (!check(flipCards[0], flipCards[1])) {
         setTimeout(() => {
-          canFlip = true;
+          setCanFlip(true);
           handleClic(flipCards[0].id);
           handleClic(flipCards[1].id);
           setCoups(coups + 1);
@@ -102,7 +102,7 @@ export default function Memory() {
     if (c1.id === c2.pairId) {
       c1.isSolved = true;
       c2.isSolved = true;
-      canFlip = true;
+      setCanFlip(true);
       setCoups(coups + 1);
 
       return true;
@@ -120,6 +120,7 @@ export default function Memory() {
   }
 
   function DisplayCard(props) {
+
     return (
       <div>
         <Card className={classes.root}>
@@ -133,14 +134,16 @@ export default function Memory() {
     );
   }
 
+  
+
   return (
     <div>
       <Infos />
       <div className={classes.div}>
         <Grid container>
-          {cards.map((card) => {
+          {cards.map((card, i) => {
             return (
-              <Flip spy={card.isFlip}>
+              <Flip spy={card.isFlip} key={i}>
                 <DisplayCard card={card} />
               </Flip>
             );
