@@ -1,16 +1,16 @@
 import React, { Component } from "react";
-import "./bootstrap.min.css";
+import { NavLink } from "react-router-dom";
 
 class Drawer extends Component {
   render() {
     return (
       <div>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-          <a class="navbar-brand" href="./">
-            Aymeric Le Feyer
-          </a>
+        <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+          <NavLink className="navbar-brand" to="/">
+            Learn React
+          </NavLink>
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             data-toggle="collapse"
             data-target="#navbarColor01"
@@ -18,20 +18,20 @@ class Drawer extends Component {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon"></span>
           </button>
 
-          <div class="collapse navbar-collapse" id="navbarColor01">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="https://www.google.com">
+          <div className="collapse navbar-collapse" id="navbarColor01">
+            <ul className="navbar-nav mr-auto">
+              <li className="nav-item itemm">
+                <NavLink className="nav-link" to="/liste">
                   Liste de trucs
-                </a>
+                </NavLink>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="https://www.github.com">
-                  GitHub
-                </a>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/memory">
+                  Memor'Emilie
+                </NavLink>
               </li>
             </ul>
           </div>

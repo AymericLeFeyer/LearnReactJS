@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import { CardMedia, Card, makeStyles, Grid } from "@material-ui/core";
 
-import { Flip } from "react-reveal";
+import Flip from "react-reveal/Flip";
+import RubberBand from "react-reveal/RubberBand";
 
-import bg from "../images/bg.png";
-import image1 from "../images/image1.jpg";
-import image2 from "../images/image2.jpg";
-import image3 from "../images/image3.jpg";
-import image4 from "../images/image4.jpg";
-import image5 from "../images/image5.jpg";
-import image6 from "../images/image6.jpg";
+import Tilt from "react-tilt";
+
+import bg from "../images/memory/bg.png";
+import image1 from "../images/memory/image1.jpg";
+import image2 from "../images/memory/image2.jpg";
+import image3 from "../images/memory/image3.jpg";
+import image4 from "../images/memory/image4.jpg";
+import image5 from "../images/memory/image5.jpg";
+import image6 from "../images/memory/image6.jpg";
 
 const useStyles = makeStyles({
   root: {
@@ -26,14 +29,14 @@ const useStyles = makeStyles({
 });
 
 const tiles = 12;
-const timeBeforeFlip = 1600;
+const timeBeforeFlip = 1500;
 
 export default function Memory() {
   const classes = useStyles();
-  const [cards, setCards] = useState(shuffle());
   const [coups, setCoups] = useState(0);
+  const [cards, setCards] = useState(shuffle());
   const [canFlip, setCanFlip] = useState(true);
-  // const [time, setTime] = useState(0);
+  const [pairsFound, setPairsFound] = useState(0);
 
   function shuffle() {
     let cards = [];
@@ -61,10 +64,9 @@ export default function Memory() {
   const handleClic = (id) => {
     if (canFlip) {
       const c = [...cards];
-  
+
       c.find((card) => {
         if (card.id === id && !card.isSolved) {
-          
           card.isFlip = card.isFlip ? false : true;
           return true;
         }
@@ -98,12 +100,19 @@ export default function Memory() {
     }
   }
 
+  function restartGame() {
+    setCards(shuffle());
+    setCoups(0);
+    setPairsFound(0);
+  }
+
   function check(c1, c2) {
     if (c1.id === c2.pairId) {
       c1.isSolved = true;
       c2.isSolved = true;
       setCanFlip(true);
       setCoups(coups + 1);
+      setPairsFound(pairsFound + 1);
 
       return true;
     }
@@ -113,28 +122,61 @@ export default function Memory() {
   function Infos() {
     return (
       <div>
-        <h1>Memor'Emilie</h1>
-        <p>Coups : {coups}</p>
+        <Grid container alignItems="center">
+          <Grid item xs>
+            <h1 className="center">Memor'Emilie</h1>
+          </Grid>
+        </Grid>
+        
+        <Grid container alignItems="center">
+          <Grid item xs>
+            <p>{coups > 1 ? "Coups : " : "Coup : "}{coups}</p>
+          </Grid>
+          <Grid item xs>
+            <RestartButton />
+          </Grid>
+        </Grid>
       </div>
     );
   }
 
   function DisplayCard(props) {
-
     return (
       <div>
         <Card className={classes.root}>
           <CardMedia
             className={classes.media}
             image={props.card.isFlip ? props.card.img : bg}
-            onClick={() => props.card.isFlip ? null : handleClic(props.card.id)}
+            onClick={() =>
+              props.card.isFlip ? null : handleClic(props.card.id)
+            }
           />
         </Card>
       </div>
     );
   }
 
-  
+  function End() {
+    return (
+      <div>
+        <h3>Bien joué !</h3>
+      </div>
+    );
+  }
+
+  function RestartButton() {
+    return (
+      <div>
+        <button
+          type="button"
+          className="btn btn-primary"
+          onClick={() => restartGame()}
+        >
+          Recommencer
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -143,13 +185,18 @@ export default function Memory() {
         <Grid container>
           {cards.map((card, i) => {
             return (
-              <Flip spy={card.isFlip} key={i}>
-                <DisplayCard card={card} />
-              </Flip>
+              <Tilt className="Tilt" options={{ max: 50, scale: 1.2 }} key={i}>
+                <Flip left spy={card.isFlip} key={i}>
+                  <RubberBand spy={card.isSolved} key={i}>
+                    <DisplayCard card={card} />
+                  </RubberBand>
+                </Flip>
+              </Tilt>
             );
           })}
         </Grid>
       </div>
+      {pairsFound === tiles / 2 ? <End /> : null}
     </div>
   );
 }
