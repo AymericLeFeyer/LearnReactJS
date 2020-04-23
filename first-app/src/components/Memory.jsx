@@ -15,17 +15,19 @@ import image5 from "../images/memory/image5.jpg";
 import image6 from "../images/memory/image6.jpg";
 
 const useStyles = makeStyles({
-  root: {
+  cardStyle: {
     maxWidth: 345,
     margin: 10,
+    boxShadow: '2px 2px 10px black'
   },
-  media: {
+  cardMedia: {
     height: 150,
     width: 150,
   },
   div: {
     width: 680,
   },
+
 });
 
 const tiles = 12;
@@ -143,9 +145,9 @@ export default function Memory() {
   function DisplayCard(props) {
     return (
       <div>
-        <Card className={classes.root}>
+        <Card className={classes.cardStyle}>
           <CardMedia
-            className={classes.media}
+            className={classes.cardMedia}
             image={props.card.isFlip ? props.card.img : bg}
             onClick={() =>
               props.card.isFlip ? null : handleClic(props.card.id)

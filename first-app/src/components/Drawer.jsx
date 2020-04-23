@@ -33,6 +33,11 @@ class Drawer extends Component {
                   Memor'Emilie
                 </NavLink>
               </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/pendu">
+                  Pendu
+                </NavLink>
+              </li>
             </ul>
           </div>
         </nav>
