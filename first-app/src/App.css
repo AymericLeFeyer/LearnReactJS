@@ -48,3 +48,21 @@
 .listeTrucs {
   list-style: none;
 }
+
+.lettersButtons {
+  margin: 2px;
+}
+
+.wordPendu {
+  align-items: center;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.imagePendu {
+  height: 30%;
+}
+
+.errorsPendu {
+  margin: 15px;
+}
