@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "/LearnReactJS/static/css/main.b397140b.chunk.css",
+    "main.js": "/LearnReactJS/static/js/main.389d69cb.chunk.js",
+    "main.js.map": "/LearnReactJS/static/js/main.389d69cb.chunk.js.map",
+    "runtime-main.js": "/LearnReactJS/static/js/runtime-main.ca514cef.js",
+    "runtime-main.js.map": "/LearnReactJS/static/js/runtime-main.ca514cef.js.map",
+    "static/js/2.b182370c.chunk.js": "/LearnReactJS/static/js/2.b182370c.chunk.js",
+    "static/js/2.b182370c.chunk.js.map": "/LearnReactJS/static/js/2.b182370c.chunk.js.map",
+    "index.html": "/LearnReactJS/index.html",
+    "precache-manifest.a2705c4d45240f7ffd972506d90e0b90.js": "/LearnReactJS/precache-manifest.a2705c4d45240f7ffd972506d90e0b90.js",
+    "service-worker.js": "/LearnReactJS/service-worker.js",
+    "static/css/main.b397140b.chunk.css.map": "/LearnReactJS/static/css/main.b397140b.chunk.css.map",
+    "static/js/2.b182370c.chunk.js.LICENSE.txt": "/LearnReactJS/static/js/2.b182370c.chunk.js.LICENSE.txt",
+    "static/media/10.png": "/LearnReactJS/static/media/10.d9c68ad6.png",
+    "static/media/2.png": "/LearnReactJS/static/media/2.d1d24e4f.png",
+    "static/media/3.png": "/LearnReactJS/static/media/3.7d5db03c.png",
+    "static/media/4.png": "/LearnReactJS/static/media/4.42c14b62.png",
+    "static/media/5.png": "/LearnReactJS/static/media/5.90287efa.png",
+    "static/media/6.png": "/LearnReactJS/static/media/6.5b86a8c5.png",
+    "static/media/7.png": "/LearnReactJS/static/media/7.9e85087f.png",
+    "static/media/8.png": "/LearnReactJS/static/media/8.e92e9292.png",
+    "static/media/9.png": "/LearnReactJS/static/media/9.ccfeaf6b.png",
+    "static/media/image1.jpg": "/LearnReactJS/static/media/image1.c6cb21bd.jpg",
+    "static/media/image2.jpg": "/LearnReactJS/static/media/image2.87d04b7a.jpg",
+    "static/media/image3.jpg": "/LearnReactJS/static/media/image3.5e893fc8.jpg",
+    "static/media/image4.jpg": "/LearnReactJS/static/media/image4.65c93016.jpg",
+    "static/media/image5.jpg": "/LearnReactJS/static/media/image5.4b992bc8.jpg",
+    "static/media/image6.jpg": "/LearnReactJS/static/media/image6.347990e9.jpg",
+    "static/media/logo.svg": "/LearnReactJS/static/media/logo.5d5d9eef.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ca514cef.js",
+    "static/js/2.b182370c.chunk.js",
+    "static/css/main.b397140b.chunk.css",
+    "static/js/main.389d69cb.chunk.js"
+  ]
+}
